@@ -39,12 +39,9 @@ class NotificationService {
     await flutterLocalNotificationsPlugin.initialize(
       initializationSettings,
       onDidReceiveNotificationResponse: (NotificationResponse notificationResponse) {
-        // Handle notification tap
-        print("Notification tapped: ${notificationResponse.payload}");
       },
     );
 
-    // Create the notification channel
     await flutterLocalNotificationsPlugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
         ?.createNotificationChannel(channel);
 
@@ -60,7 +57,7 @@ class NotificationService {
       }
       return status.isGranted;
     }
-    return true; // Return true for lower Android versions
+    return true;
   }
 
   Future<bool> _isAndroid13OrHigher() async {
@@ -80,17 +77,14 @@ class NotificationService {
 
     final hasPermission = await requestPermissions();
     if (!hasPermission) {
-      print('Notification permission denied');
       return false;
     }
 
     try {
-      print("Scheduling notifications for task: ${task.title}");
       await _scheduleMorningNotification(task);
       await _scheduleEveningNotification(task);
       return true;
     } catch (e) {
-      print('Error scheduling notifications: $e');
       return false;
     }
   }
@@ -98,8 +92,8 @@ class NotificationService {
   Future<void> _scheduleMorningNotification(Task task) async {
     await _scheduleSpecificNotification(
       task,
-      14, // 9 AM
-      26, // Minute
+      9, // 9 AM
+      0, // Minute
       _generateValidNotificationId(task.id, false),
       'Morning Reminder',
     );
@@ -122,13 +116,11 @@ class NotificationService {
       int notificationId,
       String notificationTitle,
       ) async {
-    int utcHour = hour - 6; // Bangladesh is UTC+6
+    int utcHour = hour - 6;
     if (utcHour < 0) {
-      utcHour += 24; // Adjust for the previous day if necessary
+      utcHour += 24;
     }
     final tz.TZDateTime scheduledDate = _getScheduledDateTime(task.dueDate, utcHour, minute);
-
-    print("Scheduling notification: $notificationTitle at $scheduledDate");
 
     await flutterLocalNotificationsPlugin.zonedSchedule(
       notificationId,
@@ -149,7 +141,6 @@ class NotificationService {
       matchDateTimeComponents: DateTimeComponents.time,
     );
 
-    print("Notification scheduled successfully!");
   }
 
   tz.TZDateTime _getScheduledDateTime(DateTime dueDate, int hour, int minute) {
@@ -164,7 +155,7 @@ class NotificationService {
     );
 
     if (scheduledDate.isBefore(now)) {
-      scheduledDate = scheduledDate.add(const Duration(days: 1)); // Move to next day if time is in the past
+      scheduledDate = scheduledDate.add(const Duration(days: 1));
     }
 
     return scheduledDate;

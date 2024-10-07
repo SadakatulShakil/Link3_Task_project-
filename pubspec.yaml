@@ -34,7 +34,7 @@ dependencies:
   sqflite: ^2.3.0
   path: ^1.8.3
   sensors_plus: ^3.0.2
-  fl_chart: ^0.62.0
+  fl_chart: ^0.63.0
   flutter_local_notifications: ^14.1.1
   intl: ^0.18.1
   permission_handler: ^10.2.0
@@ -63,6 +63,9 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

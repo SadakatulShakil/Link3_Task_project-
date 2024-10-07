@@ -14,7 +14,6 @@ class TodoListView extends StatefulWidget {
 
 class _TodoListViewState extends State<TodoListView> {
   final NotificationService _notificationService = NotificationService();
-  bool _isInitialized = false;
   @override
   void initState() {
     super.initState();
@@ -25,9 +24,6 @@ class _TodoListViewState extends State<TodoListView> {
     try {
       await _notificationService.init();
       final hasPermission = await _notificationService.requestPermissions();
-      setState(() {
-        _isInitialized = true;
-      });
 
       if (hasPermission) {
         _loadTasks();
@@ -238,7 +234,6 @@ class _TaskDialogState extends State<TaskDialog> {
 
               try {
                 if (widget.task == null) {
-                  print("tttttttttask created");
                   Provider.of<TodoProvider>(context, listen: false).addTask(task);
                   await _notificationService.scheduleNotifications(task);
                 } else {
