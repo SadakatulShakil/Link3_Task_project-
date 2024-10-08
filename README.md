@@ -15,9 +15,9 @@ A Flutter application that combines task management with motion sensor tracking.
 - For getting Motion Alert Dialog Just shake the phone one or two time.
 
 ## Screenshots
-[url=https://postimg.cc/QVpF1hRD][img]https://i.postimg.cc/QVpF1hRD/1.png[/img][/url] [url=https://postimg.cc/SJkJGHhM][img]https://i.postimg.cc/SJkJGHhM/2.png[/img][/url] [url=https://postimg.cc/ZWqnG30Y][img]https://i.postimg.cc/ZWqnG30Y/3.png[/img][/url]
-
-[url=https://postimg.cc/GHK9gzLS][img]https://i.postimg.cc/GHK9gzLS/4.png[/img][/url] [url=https://postimg.cc/3kbNYRDX][img]https://i.postimg.cc/3kbNYRDX/5.png[/img][/url] [url=https://postimg.cc/Ny9MMc1W][img]https://i.postimg.cc/Ny9MMc1W/6.png[/img][/url]
+![ScreenShot](https://i.postimg.cc/QVpF1hRD/1.png)  ![ScreenShot](https://i.postimg.cc/QVpF1hRD/2.png)
+![ScreenShot](https://i.postimg.cc/QVpF1hRD/3.png)  ![ScreenShot](https://i.postimg.cc/QVpF1hRD/4.png)
+![ScreenShot](https://i.postimg.cc/QVpF1hRD/5.png)  ![ScreenShot](https://i.postimg.cc/QVpF1hRD/6.png)
 
 
 ## Installation
