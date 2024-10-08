@@ -6,16 +6,19 @@ class TaskItem extends StatelessWidget {
   final Task task;
   final VoidCallback onToggleComplete;
   final VoidCallback onDelete;
+  final VoidCallback onEdit;
 
   TaskItem({
     required this.task,
     required this.onToggleComplete,
     required this.onDelete,
+    required this.onEdit,
   });
 
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: task.isCompleted ? Colors.green.shade300 : null,
       margin: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       child: ListTile(
         leading: Checkbox(
@@ -43,9 +46,18 @@ class TaskItem extends StatelessWidget {
             ),
           ],
         ),
-        trailing: IconButton(
-          icon: Icon(Icons.delete),
-          onPressed: onDelete,
+        trailing: Row(
+          mainAxisSize: MainAxisSize.min, // Shrinks the row to fit its contents
+          children: [
+            IconButton(
+              icon: Icon(Icons.edit),
+              onPressed: onEdit, // Trigger onEdit callback
+            ),
+            IconButton(
+              icon: Icon(Icons.delete),
+              onPressed: onDelete,
+            ),
+          ],
         ),
       ),
     );

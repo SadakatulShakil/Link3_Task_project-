@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:link3_task/views/sensor_tracking_screen.dart';
 import 'package:link3_task/views/todo_list_view.dart';
+import 'package:link3_task/views/widget/splash_widget.dart';
 
 class HomeView extends StatelessWidget {
   @override
@@ -18,9 +19,10 @@ class HomeView extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
               ),
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => TodoListView()),
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => SplashScreen(), // Shows splash screen first
+                  ),
                 );
               },
               child: Text('A To-Do List', style: TextStyle(fontSize: 20, color: Colors.white)),
